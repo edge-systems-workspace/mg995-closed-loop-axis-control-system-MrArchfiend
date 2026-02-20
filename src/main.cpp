@@ -23,5 +23,9 @@ void setup() {
 
 
 void loop() {
-// write your code here
+    // Check if Serial data is available
+    if (Serial.available() > 0) {
+
+        // Read integer angle input from Serial
+        targetAngle = Serial.parseInt();
 }
