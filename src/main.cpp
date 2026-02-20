@@ -28,4 +28,23 @@ void loop() {
 
         // Read integer angle input from Serial
         targetAngle = Serial.parseInt();
+
+        // Validate angle range (0–180)
+        if (targetAngle >= 0 && targetAngle <= 180) {
+
+            // Move servo to target angle
+            axisServo.write(targetAngle);
+
+            // Print confirmation message
+            Serial.print("Servo moved to: ");
+            Serial.print(targetAngle);
+            Serial.println(" degrees.");
+        }
+        else {
+            // Print error message if invalid
+            Serial.println("Error: Invalid angle. Enter value between 0 and 180.");
+        }
+
+        // Small delay to stabilize Serial communication
+        delay(10);
 }
